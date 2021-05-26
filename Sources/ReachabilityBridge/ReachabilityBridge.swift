@@ -14,7 +14,7 @@ import Network
     @objc public weak var delegate: ReachabilityBridgeDelegate?
     /// singleton instance. Should be used DI pattern where possible (just create the ReachabilityBridge() instance and pass as a dependency)
     /// But Hey! If you want it - hold it :)
-    @objc static let shared: ReachabilityBridge = ReachabilityBridge()
+    @objc public static let shared: ReachabilityBridge = ReachabilityBridge()
     private let monitorQueue: DispatchQueue = DispatchQueue(label: "ReachabilityBridge.Monitor.Q")
     private let monitor = NWPathMonitor()
     /// shows whether reachability monitor is working
@@ -26,7 +26,7 @@ import Network
     @Published
     @objc public private(set) var isCellularBased: Bool = false
     @Published
-    @objc private var isConstrained: Bool = false
+    @objc public var isConstrained: Bool = false
     /// closure which will be invoked in the main thread when reachability state was changed
     @objc public var conNotification: ((_ isConnected: Bool) -> ())?
     public override init() {
